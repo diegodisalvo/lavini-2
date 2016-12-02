@@ -1,0 +1,20 @@
+<%= form_for @post, :html => {:multipart => true} do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :subtitle %>
+    <%= f.text_field :subtitle %>
+  </p>
+  <p>
+    <%= f.label :article %>
+    <%= f.text_area :article, :size => "54x10" %>
+  </p>
+  <p>
+    <%= f.label 'Immagine' %>
+    <%= f.file_field :image %>
+  </p>
+
+  <%= submit_tag %>
+<% end %>

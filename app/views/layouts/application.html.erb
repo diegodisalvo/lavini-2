@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lavini</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar" role="navigation">
+    <div class="container-fluid">
+      <!--  Brand and toggle get grouped for better mobile display  -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand"><img alt="Brand" src="system/logo.png" class="navbar-brand" /></a>
+      </div>
+
+      <!--  Collect the nav links, forms, and other content for toggling  -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'Home', root_path%></li>
+          <li><%= link_to 'News', posts_path %></li>
+          <li><%= link_to 'Curriculum', :controller => '/pages', :action => 'show', :page => 'curriculum'%></li>
+          <li><%= link_to 'Contatti', :controller => '/pages', :action => 'show', :page => 'contact'%></li>
+          <% if current_user.present? %>
+            <li><%= link_to 'Nuovo articolo', new_post_path %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+          <% end %>
+        </ul>
+      </div><!--  /.navbar-collapse  -->
+    </div><!--  /.container-fluid  -->
+  </nav>
+
+<%= yield %>
+
+<% if notice.present? %>
+  <p class="messages notice"><%= notice %><span id="close">X</span></p>
+<% elsif alert.present? %>
+  <p class="messages alert"><%= alert %><span id="close">X</span></p>
+<% end %>
+
+</body>
+<footer>
+  <div class="footer-contacts">
+    <%= image_tag '/system/logo.png', :class=>'logo-mini'%>
+    <h2>Fabio Lavini</h2>
+    <p>lavinifabio@gmail.com</p>
+  </div>
+</footer>
+</html>

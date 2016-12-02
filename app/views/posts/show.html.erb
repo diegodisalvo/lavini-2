@@ -1,0 +1,18 @@
+<div class="jumbotron text-center">
+  <h2><%= @post.title %></h2>
+  <% if user_signed_in? %>
+    <button class="btn btn-success"><%= link_to 'Modifica', edit_post_path(@post) %></button>
+  <% end %>
+</div>
+
+<div class="article">
+  <h3 class="text-center"><%= @post.subtitle %></h3>
+  <%= image_tag @post.image, :class=>'img-responsive' %>
+  <p><%= @post.article %></p>
+</div>
+
+<% if user_signed_in? %>
+  <div class="text-center">
+    <button id="delete-button" class="btn btn-danger"><%= link_to 'Elimina questo articolo', post_path(@post), method: :delete, data: {confirm: "Sei sicuro di voler cancellare questo post?"}%></button>
+  </div>
+<% end %>

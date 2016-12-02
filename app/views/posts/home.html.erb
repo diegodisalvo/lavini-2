@@ -1,0 +1,26 @@
+<div class="main">
+  <%= image_tag '/system/logo.png', :class=>'logo' %>
+  <h2>Fabio Lavini</h2>
+  <h5>A. U. Brescia Infrastrutture</h5>
+</div>
+
+<div class="text-center">
+  <h4>Le ultime notizie</h4>
+</div>
+
+<div class="last-news">
+  <% @posts.each do |p| %>
+    <div class="post">
+      <div class="text-box">
+        <h1><%= link_to p.title, post_path(p) %></h1>
+        <h2><%= p.subtitle %></h2>
+        <p><%= truncate p.article, length: 160 %></p>
+      </div>
+      <%= image_tag p.image.url(:thumb), :class=>'img-responsive, news-image' %>
+    </div>
+  <% end %>
+</div>
+
+<div class="text-center">
+  <button id="archive-button" class="btn btn-default"><%= link_to "Visualizza tutte le notizie", posts_path %></button>
+</div>
